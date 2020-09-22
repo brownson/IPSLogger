@@ -1,0 +1,14 @@
+{
+	"id": "{B7EAF40F-7E3D-4825-A4E1-F15BBDB55419}",
+	"name": "IPSLogger",
+	"type": 0,
+	"vendor": "IPSStudio",
+	"aliases": 
+	[
+		"IPSLogger"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "IPSLogger"
+}

@@ -1,0 +1,17 @@
+{ 
+	"elements": [
+		{                                            "type": "Label",             "caption": "Output Messages:" },
+		{ "name": "MessagesFormatDate",              "type": "ValidationTextBox", "caption": "Date Format" },
+		{ "name": "MessagesContextLen",              "type": "NumberSpinner",     "caption": "Context Length" },
+		{ "name": "MessagesMicroLen",                "type": "NumberSpinner",     "caption": "Micro Seconds Length" },
+		{ "name": "MessagesAddNewOnTop",             "type": "CheckBox",          "caption": "New Messages on Top" },
+		{ "name": "MessagesStyleTable",              "type": "ValidationTextBox", "caption": "Style Table" },
+		{ "name": "MessagesStyleColumn",             "type": "ValidationTextBox", "caption": "Style Column" },
+		{ "name": "MessagesOutputLimit",             "type": "NumberSpinner",     "caption": "Output Message Limit" }
+	], 
+	"actions": [ 
+        {  "type": "TestCenter" },
+        {  "type": "Button",       "caption": "Info Message",   "onClick": "IPSLogger_Inf($id, __file__,'Test Message');" }
+	] ,
+   "status": []
+}
