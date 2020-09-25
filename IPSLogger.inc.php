@@ -14,7 +14,6 @@
 		return $instances[0];
 	}
 
-
 	// -------------------------------------------------------------------------
 	function IPSLogger_Fat($LogContext, $LogMessage) {
 		IPSLogger_LogFat(GetLoggerInstanceID(), $LogContext, $LogMessage);

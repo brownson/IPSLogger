@@ -55,7 +55,7 @@ class IPSLogger extends IPSModule
 				$this->SetValue($Ident, false);
 				break;
 			case 'LastMessageClear':
-				$this->SetValue('LastMessageOutput', '');
+				$this->ClearLastMessage();
 				$this->SetValue($Ident, false);
 				break;
 			default:
@@ -74,7 +74,7 @@ class IPSLogger extends IPSModule
 		if (!IPS_VariableProfileExists('IPSLogger.LogLevel')) {
 			IPS_CreateVariableProfile('IPSLogger.LogLevel', 1);
 		} 
-		IPS_SetVariableProfileIcon('IPSLogger.LogLevel', '~Intensity.100');
+		IPS_SetVariableProfileIcon('IPSLogger.LogLevel', 'Intensity');
 		IPS_SetVariableProfileText('IPSLogger.LogLevel', '' /*Prefix*/, '' /*Suffix*/);
 		IPS_SetVariableProfileDigits('IPSLogger.LogLevel', 0 /*Digits*/); 
 		IPS_SetVariableProfileValues('IPSLogger.LogLevel', 0 /*Min*/, 7 /*Max*/, 0 /*Step*/); 
@@ -88,21 +88,33 @@ class IPSLogger extends IPSModule
 		IPS_SetVariableProfileAssociation('IPSLogger.LogLevel', 7, $this->Translate('Trace'), '', -1);
 		IPS_SetVariableProfileAssociation('IPSLogger.LogLevel', 8, $this->Translate('All'), '', -1);
 
+		if (!IPS_VariableProfileExists('IPSLogger.Clear')) {
+			IPS_CreateVariableProfile('IPSLogger.Clear', 0);
+		} 
+		IPS_SetVariableProfileIcon('IPSLogger.Clear', 'Close');
+		IPS_SetVariableProfileText('IPSLogger.Clear', '' /*Prefix*/, '' /*Suffix*/);
+		IPS_SetVariableProfileDigits('IPSLogger.Clear', 0 /*Digits*/); 
+		IPS_SetVariableProfileValues('IPSLogger.Clear', 0 /*Min*/, 1 /*Max*/, 0 /*Step*/); 
+		IPS_SetVariableProfileAssociation('IPSLogger.Clear', 0, $this->Translate(' '), '', -1);
+		IPS_SetVariableProfileAssociation('IPSLogger.Clear', 1, $this->Translate('Clear'), '', -1);
+
 
 		$this->RegisterVariableString('MessagesOutput', $this->Translate('Messages Output'), '~HTMLBox');
 		$this->RegisterVariableInteger('MessagesLogLevel', $this->Translate('Messages LogLevel'), 'IPSLogger.LogLevel');
-		$this->RegisterVariableBoolean('MessagesClear', $this->Translate('Messages Clear'), '~Switch');
+		$this->RegisterVariableBoolean('MessagesClear', $this->Translate('Messages Clear'), 'IPSLogger.Clear');
 		$this->EnableAction("MessagesLogLevel");
 		$this->EnableAction("MessagesClear");
 
 		$this->RegisterVariableString('LastMessageOutput', $this->Translate('LastMessage Output'), '~HTMLBox');
 		$this->RegisterVariableInteger('LastMessageLogLevel', $this->Translate('LastMessage LogLevel'), 'IPSLogger.LogLevel');
-		$this->RegisterVariableBoolean('LastMessageClear', $this->Translate('LastMessage Clear'), '~Switch');
+		$this->RegisterVariableBoolean('LastMessageClear', $this->Translate('LastMessage Clear'), 'IPSLogger.Clear');
 		$this->EnableAction("LastMessageLogLevel");
 		$this->EnableAction("LastMessageClear");
 
 		$this->RegisterVariableInteger('SymconLogLevel', $this->Translate('Symcon LogLevel'), 'IPSLogger.LogLevel');
 		$this->EnableAction("SymconLogLevel");
+		
+		$this->RegisterScript("LastMessageReset", "LastMessageClear", "<?php\n\n IPSLogger_ClearLastMessage(".$this->InstanceID.");\n\n ?>");
 	}
 
 	// -------------------------------------------------------------------------
@@ -270,6 +282,11 @@ class IPSLogger extends IPSModule
 		if ($LogLevel <= $this->GetValue('SymconLogLevel')) {
 			$this-> OutSymcon($LogLevel, $LogType, $Context, $Msg);
 		}
+	}
+
+	// -------------------------------------------------------------------------
+	public function ClearLastMessage() {
+		$this->SetValue('LastMessageOutput', '');
 	}
 
 	// -------------------------------------------------------------------------

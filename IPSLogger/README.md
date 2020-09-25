@@ -37,13 +37,13 @@ __Konfigurationsseite__:
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
-MessagesContextLen       | Länge für Ausgabe des Context 
-MessagesFormatDate             | Format für Datum
-MessagesMicroLen         | Anzahl der Stellen für Micro Sekunden
+MessagesContextLen            | Länge für Ausgabe des Context 
+MessagesFormatDate            | Format für Datum
+MessagesMicroLen              | Anzahl der Stellen für Micro Sekunden
 MessagesStyleTable            | Style für HTML Table
-MessagesStyleColumn         | Stype for HTML Column
-MessagesAddNewOnTop              | Neue Meldungen oben anhängen
-MessagesOutputLimit            | Anzahl der Meldungen
+MessagesStyleColumn           | Stype for HTML Column
+MessagesAddNewOnTop           | Neue Meldungen oben anhängen
+MessagesOutputLimit           | Anzahl der Meldungen
 
 ### 5. Statusvariablen und Profile
 
@@ -66,17 +66,29 @@ SymconLogLevel                | LogLevel für Output "IP-Symcon Meldungen"
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
 IPSLogger.LogLevel            | Profile mit unterstützten LogLevel Werten
+IPSLogger.Clear               | Profile für das Löschen der Log Meldungen
 
 ### 6. PHP-Befehlsreferenz
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
-IPSLogger_Fat                 | Fatale Meldung 
-IPSLogger_Err                 | Fehler Meldung 
-IPSLogger_Wrn                 | Warnung Meldung 
-IPSLogger_Not                 | Notifizierung
-IPSLogger_Inf                 | Informative Meldung
-IPSLogger_Dbg                 | Debug Meldung 
-IPSLogger_Trc                 | Trace Meldung 
+IPSLogger_LogFat              | Fatale Meldung 
+IPSLogger_LogErr              | Fehler Meldung 
+IPSLogger_LogWrn              | Warnung Meldung 
+IPSLogger_LogNot              | Notifizierung
+IPSLogger_LogInf              | Informative Meldung
+IPSLogger_LogDbg              | Debug Meldung 
+IPSLogger_LogTrc              | Trace Meldung 
 
+Beispiel:
+`IPSLogger_LogInf(12345, __file__, "Eine Meldung zum Testen ...");
+
+Für die Integration des PHP Errorhandlers muss folgende Zeile im Skript inkludiert werden (alternativ kann die Zeile auch direkt in die Datei "__autoload.php"):
+`require_once(IPS_GetKernelDir().'/Modules/IPSLogger/PhpErrorHandler.inc.php');
+
+Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen (auch diese Zeile kann alternativ direkt in die Datei "__autoload.php" eingetragen werden):
+`require_once(IPS_GetKernelDir().'/Modules/IPSLogger/IPSLogger.inc.php');
+
+Beispiel:
+`IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");
 
