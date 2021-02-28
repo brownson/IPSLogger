@@ -24,8 +24,7 @@ Das Modul stellt einen Logger und Errorhandler zur Verfügung.
 
 ### 3. Software-Installation
 
-* Über den Module Store das Modul ViewConnect installieren.
-* Alternativ über das Module Control folgende URL hinzufügen:
+* Über das Module Control folgende URL hinzufügen:
 `https://github.com/brownson/IPSLogger`
 
 ### 4. Einrichten der Instanzen in IP-Symcon
@@ -88,6 +87,16 @@ Für die Integration des PHP Errorhandlers muss folgende Zeile im Skript inkludi
 
 Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen (auch diese Zeile kann alternativ direkt in die Datei "__autoload.php" eingetragen werden):
 `require_once(IPS_GetKernelDir().'/Modules/IPSLogger/IPSLogger.inc.php');
+
+Name                          | Beschreibung
+----------------------------- | ---------------------------------
+IPSLogger_Fat                 | Fatale Meldung 
+IPSLogger_Err                 | Fehler Meldung 
+IPSLogger_Wrn                 | Warnung Meldung 
+IPSLogger_Not                 | Notifizierung
+IPSLogger_Inf                 | Informative Meldung
+IPSLogger_Dbg                 | Debug Meldung 
+IPSLogger_Trc                 | Trace Meldung 
 
 Beispiel:
 `IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");
