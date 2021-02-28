@@ -83,10 +83,10 @@ Beispiel:
 `IPSLogger_LogInf(12345, __file__, "Eine Meldung zum Testen ...");
 
 Für die Integration des PHP Errorhandlers muss folgende Zeile im Skript inkludiert werden (alternativ kann die Zeile auch direkt in die Datei "__autoload.php"):
-`require_once(IPS_GetKernelDir().'/Modules/IPSLogger/PhpErrorHandler.inc.php');
+`require_once(IPS_GetKernelDir().'/modules/IPSLogger/PhpErrorHandler.inc.php');
 
 Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen (auch diese Zeile kann alternativ direkt in die Datei "__autoload.php" eingetragen werden):
-`require_once(IPS_GetKernelDir().'/Modules/IPSLogger/IPSLogger.inc.php');
+`require_once(IPS_GetKernelDir().'/modules/IPSLogger/IPSLogger.inc.php');
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------

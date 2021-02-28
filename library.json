@@ -2,7 +2,7 @@
 	"id": "{A5107E56-FB3D-11EA-ADC1-0242AC120002}",
 	"author": "Andreas Brauneis",
 	"name": "IPSLogger",
-	"url": "ipsview.brownson.at",
+	"url": "https://github.com/brownson/IPSLogger",
 	"version": "0.1",
 	"build": 0,
 	"date": 0
