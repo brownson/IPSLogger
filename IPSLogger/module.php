@@ -219,7 +219,7 @@ class IPSLogger extends IPSModule
 					$StrLen	  = $StrPos2 - $StrPos1;
 					$MsgList	 = substr($MsgList, $StrPos1, $StrLen);
 				}
-				$this->SetValue(MessagesOutput, $TablePrefix.$Out.$MsgList.'</table>');
+				$this->SetValue('MessagesOutput', $TablePrefix.$Out.$MsgList.'</table>');
 			} else {
 				if (strpos($MsgList, '</table>') === false) {
 					$MsgList = "";

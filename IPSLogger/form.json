@@ -11,7 +11,7 @@
 	], 
 	"actions": [ 
         {  "type": "TestCenter" },
-        {  "type": "Button",       "caption": "Info Message",   "onClick": "IPSLogger_Inf($id, __file__,'Test Message');" }
+        {  "type": "Button",       "caption": "Info Message",   "onClick": "IPSLogger_LogInf($id, __file__,'Test Message');" }
 	] ,
    "status": []
 }
