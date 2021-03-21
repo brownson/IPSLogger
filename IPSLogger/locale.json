@@ -1,7 +1,31 @@
 {
 	"translations": {
 		"de": { 
-			"LastRefresh": "Letzte Modifikation"
+			"Output Messages": "Logger Ausgabe Meldungen (HTML)",
+			"Date Format": "Formatierung Datum",
+			"Context Length": "Länge Ausgabe Kontext",
+			"Micro Seconds Length": "Länge Ausgabe Micro Sekunden",
+			"New Messages on Top": "Neue Meldungen am Beginn der Liste einfügen",
+			"Style Table": "Style HTML Table",
+			"Output Message Limit": "Anzahl der Meldungen",
+			"Errorhandler": "Errorhandler",
+			
+			"ErrorhandlerInfo" : "Der Errorhandler kann durch einen Eintrag in der Datei __autoload.php für alle Skripte aktiviert werden. Details dazu finden Sie in der Dokumentation des Modules.",
+			"LoggerInfo" : "Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen, durch einen Eintrag in der __autoload.php kann auch diese Funktion global zur Verfügung gestellt werden.",
+			"Example __autoload.php" : "Beispiel für __autoload.php",
+			
+			"Errorhandler is successfully registered":"Errorhandler ist erfolgreich registriert/aktiviert",
+			"Errorhandler is NOT registered":"Errorhandler ist NICHT registriert",
+			
+			"Write Info Message":"Schreiben einer Info Meldung"
+		},
+		
+		
+		
+		"en": { 
+			"ErrorhandlerInfo":"The Errorhandler could be installed by adding a line to the file __autoload.php, details can be found in the documentation of the module.",
+			"LoggerInfo" : "In addition, there is also the option of calling up the logger without specifying the InstanceID; this function can also be made available globally through an entry in the __autoload.php.",
+			"Example __autoload.php" : "Example for __autoload.php"
 		}
 	}
 }

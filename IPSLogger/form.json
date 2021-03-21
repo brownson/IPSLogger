@@ -1,17 +1,32 @@
 { 
 	"elements": [
-		{                                            "type": "Label",             "caption": "Output Messages:" },
-		{ "name": "MessagesFormatDate",              "type": "ValidationTextBox", "caption": "Date Format" },
-		{ "name": "MessagesContextLen",              "type": "NumberSpinner",     "caption": "Context Length" },
-		{ "name": "MessagesMicroLen",                "type": "NumberSpinner",     "caption": "Micro Seconds Length" },
-		{ "name": "MessagesAddNewOnTop",             "type": "CheckBox",          "caption": "New Messages on Top" },
-		{ "name": "MessagesStyleTable",              "type": "ValidationTextBox", "caption": "Style Table" },
-		{ "name": "MessagesStyleColumn",             "type": "ValidationTextBox", "caption": "Style Column" },
-		{ "name": "MessagesOutputLimit",             "type": "NumberSpinner",     "caption": "Output Message Limit" }
+		{ "type": "ExpansionPanel", "caption": "Output Messages", "items": 
+			[		
+				{ "type": "ValidationTextBox",     "caption": "Date Format" ,           "name": "MessagesFormatDate"},
+				{ "type": "NumberSpinner",         "caption": "Context Length" ,        "name": "MessagesContextLen"},
+				{ "type": "NumberSpinner",         "caption": "Micro Seconds Length",   "name": "MessagesMicroLen" },
+				{ "type": "CheckBox",              "caption": "New Messages on Top",    "name": "MessagesAddNewOnTop" },
+				{ "type": "ValidationTextBox",     "caption": "Style Table" ,           "name": "MessagesStyleTable"},
+				{ "type": "ValidationTextBox",     "caption": "Style Column" ,          "name": "MessagesStyleColumn"},
+				{ "type": "NumberSpinner",         "caption": "Output Message Limit",   "name": "MessagesOutputLimit" }
+			] },
+		{ "type": "ExpansionPanel", "caption": "Errorhandler", "items": 
+			[
+				{ "type": "Label",                 "caption": "ErrorhandlerInfo" },
+				{ "type": "Label",                 "caption": "LoggerInfo" },
+				{ "type": "Label",                 "caption": "Example __autoload.php" },
+				{ "type": "Label",                 "caption": "require_once(IPS_GetKernelDir().'/modules/IPSLogger/IPSLogger.inc.php')"},
+				{ "type": "Label",                 "caption": "require_once(IPS_GetKernelDir().'/modules/IPSLogger/PhpErrorHandler.inc.php"},
+				{ "type": "Label",                 "caption": "Status:" },
+				{ "type": "Label",                 "caption": "" }
+			] }
 	], 
 	"actions": [ 
-        {  "type": "TestCenter" },
-        {  "type": "Button",       "caption": "Info Message",   "onClick": "IPSLogger_LogInf($id, __file__,'Test Message');" }
+ 		{ "type": "ExpansionPanel", "caption": "TestCenter", "items": 
+			[
+				{  "type": "TestCenter" } 
+			] },
+        {  "type": "Button",       "caption": "Write Info Message",   "onClick": "IPSLogger_LogInf($id, __file__,'Test Message');" }
 	] ,
    "status": []
 }

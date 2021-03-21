@@ -43,27 +43,6 @@ class IPSLogger extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-	public function RequestAction($Ident, $Value) {
-		$this->SetValue($Ident, $Value);
-		switch($Ident) {
-			case 'MessagesLogLevel':
-			case 'LastMessageLogLevel':
-			case 'SymconLogLevel':
-				break;
-			case 'MessagesClear':
-				$this->SetValue('MessagesOutput', '');
-				$this->SetValue($Ident, false);
-				break;
-			case 'LastMessageClear':
-				$this->ClearLastMessage();
-				$this->SetValue($Ident, false);
-				break;
-			default:
-				throw new Exception("Invalid ident");
-		}
-	}
-	
-	// -------------------------------------------------------------------------
 	public function ApplyChanges() {
 		parent::ApplyChanges();
 
@@ -115,6 +94,51 @@ class IPSLogger extends IPSModule
 		$this->EnableAction("SymconLogLevel");
 		
 		$this->RegisterScript("LastMessageReset", "LastMessageClear", "<?php\n\n IPSLogger_ClearLastMessage(".$this->InstanceID.");\n\n ?>");
+	}
+
+	// -------------------------------------------------------------------------
+	private function GetErrorHandlerStatus() {
+		$filenameAutoload = IPS_GetKernelDir(). "scripts/__autoload.php";
+		$isErrorHandlerRegistered = false;
+		if (file_exists($filenameAutoload)) {
+			$contentAutoLoad =  file_get_contents($filenameAutoload);
+			$isErrorHandlerRegistered = true;//strpos ($contentAutoLoad, '/modules/IPSLogger/PhpErrorHandler.inc.php')!== false;
+		}
+
+		if ($isErrorHandlerRegistered) {
+			return $this->Translate("Errorhandler is successfully registered");
+		} else {
+			return $this->Translate("Errorhandler is NOT registered");
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	public function GetConfigurationForm() {
+		$data = json_decode(file_get_contents(__DIR__ . "/form.json"), true);
+		$data['elements']['1']['items'][6]['caption'] = $this->GetErrorHandlerStatus();
+
+		return json_encode($data);
+	}
+
+	// -------------------------------------------------------------------------
+	public function RequestAction($Ident, $Value) {
+		$this->SetValue($Ident, $Value);
+		switch($Ident) {
+			case 'MessagesLogLevel':
+			case 'LastMessageLogLevel':
+			case 'SymconLogLevel':
+				break;
+			case 'MessagesClear':
+				$this->SetValue('MessagesOutput', '');
+				$this->SetValue($Ident, false);
+				break;
+			case 'LastMessageClear':
+				$this->ClearLastMessage();
+				$this->SetValue($Ident, false);
+				break;
+			default:
+				throw new Exception("Invalid ident");
+		}
 	}
 
 	// -------------------------------------------------------------------------
