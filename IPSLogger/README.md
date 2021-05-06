@@ -14,6 +14,7 @@ Das Modul stellt einen Logger und Errorhandler zur Verfügung.
 ### 1. Funktionsumfang
 
 * Protokollieren von Meldungen
+* Protokollieren von Fehlern in IP-Symcon Skripten
 * Ausgabe der letzen x Meldungen in eine HTML Variable
 * Ausgabe der letzen Meldung in eine String Variable
 * Weiterleiten der Meldungen in das IP-Symcon Log
@@ -24,13 +25,12 @@ Das Modul stellt einen Logger und Errorhandler zur Verfügung.
 
 ### 3. Software-Installation
 
-* Über das Module Control folgende URL hinzufügen:
-`https://github.com/brownson/IPSLogger`
+Die Installation erfolgt über den Module Store.
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
 - Unter "Instanz hinzufügen" kann das 'IPSLogger'-Modul mithilfe des Schnellfilters gefunden werden.
-    - Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
+Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
 
 __Konfigurationsseite__:
 
@@ -80,13 +80,19 @@ IPSLogger_LogDbg              | Debug Meldung
 IPSLogger_LogTrc              | Trace Meldung 
 
 Beispiel:
-`IPSLogger_LogInf(12345, __file__, "Eine Meldung zum Testen ...");
+```IPSLogger_LogInf(12345, __file__, "Eine Meldung zum Testen ...");```
+
+----------
+### Errorhandler
 
 Für die Integration des PHP Errorhandlers muss folgende Zeile im Skript inkludiert werden (alternativ kann die Zeile auch direkt in die Datei "__autoload.php"):
-`require_once(IPS_GetKernelDir().'/modules/IPSLogger/PhpErrorHandler.inc.php');
+```require_once(IPS_GetKernelDir().'/modules/IPSLogger/PhpErrorHandler.inc.php');```
+
+----------
+### Globale Logger Funktionen
 
 Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen (auch diese Zeile kann alternativ direkt in die Datei "__autoload.php" eingetragen werden):
-`require_once(IPS_GetKernelDir().'/modules/IPSLogger/IPSLogger.inc.php');
+```require_once(IPS_GetKernelDir().'/modules/IPSLogger/IPSLogger.inc.php');```
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
@@ -99,5 +105,4 @@ IPSLogger_Dbg                 | Debug Meldung
 IPSLogger_Trc                 | Trace Meldung 
 
 Beispiel:
-`IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");
-
+```IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");```
