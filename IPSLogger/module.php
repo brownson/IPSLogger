@@ -46,10 +46,6 @@ class IPSLogger extends IPSModule
 	public function ApplyChanges() {
 		parent::ApplyChanges();
 
-		if (IPS_GetKernelRunlevel() !== KR_READY) {
-			return;
-		}
-
 		if (!IPS_VariableProfileExists('IPSLogger.LogLevel')) {
 			IPS_CreateVariableProfile('IPSLogger.LogLevel', 1);
 		} 
@@ -314,37 +310,37 @@ class IPSLogger extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogFat($LogContext, $LogMessage) {
+	public function LogFat(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_FATAL, self::LOGTYPE_FATAL, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogErr($LogContext, $LogMessage) {
+	public function LogErr(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_ERROR, self::LOGTYPE_ERROR, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogWrn($LogContext, $LogMessage) {
+	public function LogWrn(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_WARNING, self::LOGTYPE_WARNING, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogNot($LogContext, $LogMessage) {
+	public function LogNot(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_NOTIFICATION, self::LOGTYPE_NOTIFICATION, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogInf($LogContext, $LogMessage) {
+	public function LogInf(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_INFORMATION, self::LOGTYPE_INFORMATION, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogDbg($LogContext, $LogMessage) {
+	public function LogDbg(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_DEBUG, self::LOGTYPE_DEBUG, $LogContext, $LogMessage);
 	}
 
 	// -------------------------------------------------------------------------
-	public function LogTrc($LogContext, $LogMessage) {
+	public function LogTrc(string $LogContext, string $LogMessage) {
 		$this->Out(self::LOGLEVEL_TRACE, self::LOGTYPE_TRACE, $LogContext, $LogMessage);
 	}
 
