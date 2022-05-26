@@ -36,9 +36,9 @@ __Konfigurationsseite__:
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
-MessagesContextLen            | Länge für Ausgabe des Context 
+MessagesContextLen            | Länge für Ausgabe des Kontext 
 MessagesFormatDate            | Format für Datum
-MessagesMicroLen              | Anzahl der Stellen für Micro Sekunden
+MessagesMicroLen              | Anzahl der Stellen für Mikrosekunden
 MessagesStyleTable            | Style für HTML Table
 MessagesStyleColumn           | Stype for HTML Column
 MessagesAddNewOnTop           | Neue Meldungen oben anhängen
