@@ -86,13 +86,17 @@ Beispiel:
 ### Errorhandler
 
 Für die Integration des PHP Errorhandlers muss folgende Zeile im Skript inkludiert werden (alternativ kann die Zeile auch direkt in die Datei "__autoload.php"):
-```require_once(IPS_GetKernelDir().'/modules/IPSLogger/PhpErrorHandler.inc.php');```
+```
+require_once(IPS_GetKernelDir().'/modules/.store/at.brownson.ipslogger/PhpErrorHandler.inc.php');
+```
 
 ----------
 ### Globale Logger Funktionen
 
 Zusätzlich steht auch noch eine Möglichkeit zur Verfügung den Logger ohne Angabe der InstanceID aufzurufen (auch diese Zeile kann alternativ direkt in die Datei "__autoload.php" eingetragen werden):
-```require_once(IPS_GetKernelDir().'/modules/IPSLogger/IPSLogger.inc.php');```
+```
+require_once(IPS_GetKernelDir().'/modules/.store/at.brownson.ipslogger/IPSLogger.inc.php');
+```
 
 Name                          | Beschreibung
 ----------------------------- | ---------------------------------
@@ -105,4 +109,6 @@ IPSLogger_Dbg                 | Debug Meldung
 IPSLogger_Trc                 | Trace Meldung 
 
 Beispiel:
-```IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");```
+```
+IPSLogger_Inf(__file__, "Eine Meldung zum Testen ...");
+```
