@@ -1,6 +1,6 @@
 <?php
 
-	function IPSLogger_PhpErrorHandler ($ErrType, $ErrMsg, $FileName, $LineNum, $context = null)
+	function IPSLogger_PhpErrorHandler ($ErrType, $ErrMsg, $FileName, $LineNum)
 	{
 		if (error_reporting() == 0) {return false;}   // No Reporting of suppressed Erros (suppressed @)
 		require_once "IPSLogger.inc.php";
@@ -81,7 +81,7 @@
 		}
 	}
 
-	$old_error_handler = set_error_handler("IPSLogger_PhpErrorHandler",E_ALL);
+	$old_error_handler = set_error_handler("IPSLogger_PhpErrorHandler", E_ERROR | E_PARSE);
 
 	function IPSLogger_PhpFatalErrorHandler() {
 		if (@is_array($e = @error_get_last())) {
