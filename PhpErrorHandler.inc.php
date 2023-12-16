@@ -1,6 +1,6 @@
 <?php
 
-	function IPSLogger_PhpErrorHandler ($ErrType, $ErrMsg, $FileName, $LineNum, $Vars)
+	function IPSLogger_PhpErrorHandler ($ErrType, $ErrMsg, $FileName, $LineNum, $context = null)
 	{
 		if (error_reporting() == 0) {return false;}   // No Reporting of suppressed Erros (suppressed @)
 		require_once "IPSLogger.inc.php";

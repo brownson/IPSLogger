@@ -138,7 +138,7 @@ class IPSLogger extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-	public function GetValue($Ident)
+	private function GetLoggerInstanceValue(string $Ident)
 	{
 		return GetValue(@IPS_GetObjectIDByIdent($Ident, $this->InstanceID));
 	}
@@ -158,7 +158,7 @@ class IPSLogger extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-  private function GetLogTypeStyle ($LogType) {
+	private function GetLogTypeStyle ($LogType) {
   		$LogTypeStyle= array (
 			self::LOGTYPE_FATAL				 => 'color:#000000;background:#FF6347;',
 			self::LOGTYPE_ERROR				 => 'color:#000000;background:#FF0000;',
@@ -202,7 +202,7 @@ class IPSLogger extends IPSModule
 			}
 
 			$CurrentMsgId             = $this->ReadAttributeInteger('MessageOutputID')+1;
-			$MsgList                  = $this->GetValue('MessagesOutput');
+			$MsgList                  = $this->GetLoggerInstanceValue('MessagesOutput');
 			$MsgCount                 = $this->ReadPropertyInteger('MessagesOutputLimit');
 			$MessagesContextLen       = $this->ReadPropertyInteger('MessagesContextLen');
 			$MessagesMicroLen         = $this->ReadPropertyInteger('MessagesMicroLen');
@@ -289,17 +289,17 @@ class IPSLogger extends IPSModule
 		$this->SendDebug($Context, $LogType.': '.$Msg, 0);
 		
 		// Last Messages
-		if ($LogLevel <= $this->GetValue('LastMessageLogLevel')) {
+		if ($LogLevel <= $this->GetLoggerInstanceValue('LastMessageLogLevel')) {
 			$this-> OutLastMessage($LogLevel, $LogType, $Context, $Msg);
 		}
 
 		// Output Messages
-		if ($LogLevel <= $this->GetValue('MessagesLogLevel')) {
+		if ($LogLevel <= $this->GetLoggerInstanceValue('MessagesLogLevel')) {
 			$this-> OutMessages($LogLevel, $LogType, $Context, $Msg);
 		}
 
 		// Output Symcon
-		if ($LogLevel <= $this->GetValue('SymconLogLevel')) {
+		if ($LogLevel <= $this->GetLoggerInstanceValue('SymconLogLevel')) {
 			$this-> OutSymcon($LogLevel, $LogType, $Context, $Msg);
 		}
 	}
